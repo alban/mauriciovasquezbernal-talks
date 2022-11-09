@@ -1,0 +1,5 @@
+var errVerifier *ebpf.VerifierError
+if errors.As(err, &errVerifier) {
+	fmt.Printf("Inner error: %+v", errVerifier)
+}
+
