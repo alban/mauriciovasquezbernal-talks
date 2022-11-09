@@ -1,0 +1,6 @@
+opts := &ebpf.CollectionOptions{
+	Programs: ebpf.ProgramOptions{
+		LogSize: ebpf.DefaultVerifierLogSize * 100,
+	},
+}
+
