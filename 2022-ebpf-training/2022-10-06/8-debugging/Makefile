@@ -1,4 +1,4 @@
 test:
-	go generate ./...
-	go run -exec sudo ./...
+	go generate ./
+	go run -exec sudo ./
 
