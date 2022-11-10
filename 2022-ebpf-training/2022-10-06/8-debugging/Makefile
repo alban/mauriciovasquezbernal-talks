@@ -1,4 +1,5 @@
 test:
 	go generate ./
-	go run -exec sudo ./
+	go build -o main ./
+	sudo ./main
 
