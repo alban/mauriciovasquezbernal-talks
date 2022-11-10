@@ -75,8 +75,6 @@ int ig_execve_e(struct trace_event_raw_sys_enter* ctx)
 		return 0;
 
 	event = bpf_map_lookup_elem(&execs, &pid);
-	if (!event)
-		return 0;
 
 	event->pid = tgid;
 	event->uid = uid;
