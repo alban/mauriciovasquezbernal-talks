@@ -14,6 +14,7 @@ const volatile bool filter_by_mnt_ns = false;
 
 // Some variables for debugging
 volatile u32 last_pid = 0;
+volatile u64 last_timestamp = 0;
 
 static const struct event empty_event = {};
 
@@ -147,6 +148,10 @@ int ig_execve_x(struct trace_event_raw_sys_exit* ctx)
 		return 0;
 	id = bpf_get_current_pid_tgid();
 	pid = (pid_t)id;
+
+	last_pid = pid;
+	last_timestamp = bpf_ktime_get_ns();
+
 	event = bpf_map_lookup_elem(&execs, &pid);
 	if (!event)
 		return 0;
